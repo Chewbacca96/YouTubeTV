@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>YouTubeTV</title>
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>
+		<div id="player"></div>
+
+		<script type="text/javascript">
+			var tag = document.createElement('script');
+	      	tag.src = "https://www.youtube.com/iframe_api";
+
+	      	var firstScriptTag = document.getElementsByTagName('script')[0];
+	      	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+			var player;
+      		function onYouTubeIframeAPIReady() {
+        		player = new YT.Player('player', {
+          			height: '1280',
+          			width: '100%',
+          			playerVars: { 'controls': 0, 'allowfullscreen': 1 },
+          			events: {
+			            'onReady': onPlayerReady,
+			            'onStateChange': onPlayerStateChange
+          			}
+        		});
+      		}
+
+      		var videos = [
+		        {
+		          	vid: 'cskYRDuZIes',
+		        },
+
+		        {
+		          	vid: 'mGPigZiiMvk',
+		        },
+
+		        {
+		          	vid: 'TDwJDRbSYbw',
+		        },
+
+		        {
+		          	vid: 'o9UQSUHHdtA',
+		        }
+		    ];	
+
+		    var index = 0;
+
+      		function onPlayerReady(event) {
+      			event.target.cueVideoById({
+          			videoId: videos[index].vid
+        		});
+
+        		event.target.playVideo();
+      		}
+
+	      	function onPlayerStateChange(event) {
+	        	if (event.data === YT.PlayerState.ENDED) {
+          			console.log(index);
+
+          			if (index < videos.length - 1) {
+            			event.target.loadVideoById({
+              				videoId: videos[index].vid
+            			});
+
+            			index++;
+          			}
+        		}
+	      	}
+		</script>
+	</body>
+</html>
