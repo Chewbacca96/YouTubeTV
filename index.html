@@ -62,11 +62,11 @@
           			console.log(index);
 
           			if (index < videos.length - 1) {
+          				index++;
+          				
             			event.target.loadVideoById({
               				videoId: videos[index].vid
             			});
-
-            			index++;
           			}
         		}
 	      	}
