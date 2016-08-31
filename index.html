@@ -24,30 +24,36 @@
           			playerVars: { 'controls': 0, 'allowfullscreen': 1 },
           			events: {
 			            'onReady': onPlayerReady,
-			            'onStateChange': onPlayerStateChange
+			            //'onStateChange': onPlayerStateChange
           			}
         		});
       		}
 
-      		var videos = [
+      		/*var videos = [
 		        {
-		          	vid: 'cskYRDuZIes',
+		          	vid: 'cskYRDuZIes'
 		        },
 
 		        {
-		          	vid: 'mGPigZiiMvk',
+		          	vid: 'mGPigZiiMvk'
 		        },
 
 		        {
-		          	vid: 'TDwJDRbSYbw',
+		          	vid: 'TDwJDRbSYbw'
 		        },
 
 		        {
-		          	vid: 'o9UQSUHHdtA',
+		          	vid: 'o9UQSUHHdtA'
 		        }
-		    ];	
+		    ];*/	
 
-		    var index = 0;
+		    var videoList = ['cskYRDuZIes', 'mGPigZiiMvk', 'TDwJDRbSYbw', 'o9UQSUHHdtA'];
+
+		    function onPlayerReady(event) {
+		    	event.target.loadPlaylist(videoList);
+		    }
+
+		    /*var index = 0;
 
       		function onPlayerReady(event) {
       			event.target.cueVideoById({
@@ -63,13 +69,13 @@
 
           			if (index < videos.length - 1) {
           				index++;
-          				
+
             			event.target.loadVideoById({
               				videoId: videos[index].vid
             			});
           			}
         		}
-	      	}
+	      	}*/
 		</script>
 	</body>
 </html>
